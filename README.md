@@ -22,5 +22,21 @@
 - **游戏记录**  
   两种模式的最高分会自动保存并在选模式界面显示
 <br><br>
+### 游戏截图
+<p align="center">
+  <img src="Graphics/menu.png" width="350" alt="游戏主菜单"/>
+  <br>
+  <strong>游戏主菜单</strong>
+  <br><br>
+  <img src="Graphics/normal mode.png" width="350" alt="正常模式"/>
+  <br>
+  <strong>正常模式</strong>
+  <br><br>
+  <img src="Graphics/hard mode.png" width="350" alt="困难模式"/>
+  <br>
+  <strong>困难模式</strong>
+</p>
+<br><br>
+
 > ### 特别鸣谢
 > **LCQ**, **Liza**, **YSJ**, **XHR**, **HKW**, **Evgenia** ❤️  
