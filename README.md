@@ -23,6 +23,7 @@
   两种模式的最高分会自动保存在本地文件夹
 <br><br>
 ### 游戏截图
+<br>
 <p align="center">
   <img src="Graphics/menu.png" width="350" alt="游戏主菜单"/>
   <br>
