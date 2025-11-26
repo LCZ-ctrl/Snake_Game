@@ -1,4 +1,4 @@
-# 贪吃蛇游戏
+# Snake Game
 
 一款由 C++ 开发的经典贪吃蛇游戏，开发环境为 Visual Studio 2022  
 引用的第三方库包括 Raylib，Dear ImGui 以及 rlImGui
