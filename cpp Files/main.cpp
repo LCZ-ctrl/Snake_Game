@@ -24,9 +24,9 @@ using namespace std;
 #include "game.h"
 #include "intro_animation.h"
 
-// 全局音频线程控制（仅本文件使用）
+// 全局音频线程控制
 static std::atomic<bool> g_audioThreadRunning(false);
-static std::atomic<bool> g_musicStarted(false); // 标记是否已开始播放（用于确保 logo 时不播放）
+static std::atomic<bool> g_musicStarted(false); 
 static std::thread g_audioThread;
 static std::mutex g_audioMutex;
 
@@ -36,7 +36,7 @@ int main() {
 
     // 窗口
     InitWindow(2 * offset + cellSize * cellCount, 2 * offset + cellSize * cellCount, "Snake!");
-    Image icon = LoadImage("Graphics/logo.png"); // 确保 logo.png 与 exe 同目录
+    Image icon = LoadImage("Graphics/logo.png"); 
     SetWindowIcon(icon);
     UnloadImage(icon);
 
@@ -393,7 +393,7 @@ int main() {
                     ImGui::Spacing();
                     ImGui::Separator();
                     ImGui::Spacing();
-                    ImGui::TextColored(ImVec4(0.5f, 0.9f, 1.0f, 1.0f), "Special thanks to:");
+                    ImGui::TextColored(ImVec4(0.5f, 0.9f, 1.0f, 1.0f), "Special thanks to :)");
                     ImGui::TextColored(ImVec4(0.5f, 0.9f, 1.0f, 1.0f), "LCQ Liza YSJ XHR HKW Evgenia");
                     ImGui::Separator();
                     ImGui::Spacing();
