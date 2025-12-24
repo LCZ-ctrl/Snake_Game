@@ -4,11 +4,6 @@
 
 Food::Food(std::deque<Vector2> snakeBody) {
     Image image = LoadImage("Graphics/food.png");
-
-    std::cout << "LoadImage returned data=" << (void*)image.data
-        << " w=" << image.width << " h=" << image.height
-        << " format=" << image.format << std::endl;
-
     texture = LoadTextureFromImage(image);
     UnloadImage(image);
     position = GenerateRandomPos(snakeBody);
@@ -31,6 +26,8 @@ Vector2 Food::GenerateRandomCell() {
 
 Vector2 Food::GenerateRandomPos(std::deque<Vector2> snakeBody, const std::vector<Vector2>& obstacles) {
     Vector2 pos = GenerateRandomCell();
+
+    // Keep regenerating as long as the position hits the snake's body or obstacles
     while (ElementInDeque(pos, snakeBody) || ElementInVector(pos, obstacles)) {
         pos = GenerateRandomCell();
     }

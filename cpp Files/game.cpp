@@ -18,10 +18,10 @@ Game::Game() {
     musicVolume1 = 0.5f;
     musicVolume5 = 0.5f;
     musicVolume6 = 0.4f;
-    Music music4 = LoadMusicStream("Sounds/la vie en rose.mp3");
+    Music music1 = LoadMusicStream("Sounds/a brief love affair.mp3");
     Music music2 = LoadMusicStream("Sounds/winter heartbeats.mp3");
     Music music3 = LoadMusicStream("Sounds/quite rooms.mp3");
-    Music music1 = LoadMusicStream("Sounds/a brief love affair.mp3");
+    Music music4 = LoadMusicStream("Sounds/la vie en rose.mp3");
     Music music5 = LoadMusicStream("Sounds/Lovers.mp3");
     Music music6 = LoadMusicStream("Sounds/be there.mp3");
     music1.looping = false;
@@ -51,6 +51,8 @@ Game::Game() {
     musicDurations.push_back(94.0f);
     musicDurations.push_back(182.0f);
     PlayMusicStream(playlist[currentMusicIndex]);
+
+    obstacleTexture = LoadTexture("Graphics/bomb.png");
 }
 
 Game::~Game() {
@@ -60,13 +62,31 @@ Game::~Game() {
         UnloadMusicStream(playlist[i]);
     }
     CloseAudioDevice();
+
+    UnloadTexture(obstacleTexture);
 }
 
 void Game::GenerateObstacles() {
     obstacles.clear();
+
+    std::vector<Vector2> safetyZone = {
+        Vector2{7, 9},
+        Vector2{8, 9},
+        Vector2{9, 9},
+        Vector2{10, 9},
+        Vector2{11, 9}
+    };
+
     while (obstacles.size() < 10) {
         Vector2 pos = GenerateRandomCellForObstacles();
-        if (!ElementInDeque(pos, snake.body) && !Vector2Equals(pos, food.position) && !ElementInVector(pos, obstacles)) {
+        // Obstacles must not spawn on:
+        // 1. The snake's body
+        // 2. The food's position
+        // 3. Another existing obstacle
+        if (!ElementInDeque(pos, snake.body) && 
+            !Vector2Equals(pos, food.position) && 
+            !ElementInVector(pos, obstacles) &&
+            !ElementInVector(pos, safetyZone)) { 
             obstacles.push_back(pos);
         }
     }
@@ -125,15 +145,24 @@ void Game::Draw() {
     Vector2 shakeOffset = GetScreenShakeOffset();
     BeginMode2D(Camera2D{ {shakeOffset.x, shakeOffset.y}, {0, 0}, 0.0f, 1.0f });
     food.Draw();
-    snake.Draw();
+
+    Color currentSnakeColor;
+    if (mode == 2) {
+        currentSnakeColor = BLACK;
+    }
+    else {
+        currentSnakeColor = darkGreen;
+    }
+    snake.Draw(currentSnakeColor);
+
     if (mode == 2) {
         for (auto& obs : obstacles) {
-            Rectangle obstacleRect = {
-                offset + obs.x * cellSize,
-                offset + obs.y * cellSize,
-                (float)cellSize, (float)cellSize
+            Vector2 position = {
+                (float)offset + obs.x * cellSize,
+                (float)offset + obs.y * cellSize
             };
-            DrawRectangleRounded(obstacleRect, 0.2, 6, GRAY);
+            float scale = (float)cellSize / (float)obstacleTexture.width;
+            DrawTextureEx(obstacleTexture, position, 0.0f, scale, WHITE);
         }
     }
     if (!running || paused) {
@@ -226,13 +255,17 @@ void Game::Draw() {
 
 void Game::Update(float deltaTime) {
     if (!running) return;
-    snake.UpdateDirection();
+    snake.UpdateDirection(); // apply player input
     Vector2 nextHead = Vector2Add(snake.body[0], snake.direction);
+
+    // Collision Check 1: Walls
     if (nextHead.x >= cellCount || nextHead.x < 0 || nextHead.y >= cellCount || nextHead.y < 0) {
         GameOver();
         SpawnCollisionParticles();
         return;
     }
+
+    // Collision Check 2: Snake's own body
     std::deque<Vector2> collisionBody = snake.body;
     if (!snake.addSegment) {
         collisionBody.pop_back();
@@ -244,6 +277,8 @@ void Game::Update(float deltaTime) {
             return;
         }
     }
+
+    // Hard mode collision check
     if (mode == 2) {
         for (unsigned int i = 0; i < obstacles.size(); i++) {
             if (Vector2Equals(nextHead, obstacles[i])) {
@@ -253,6 +288,7 @@ void Game::Update(float deltaTime) {
             }
         }
     }
+
     bool foodEaten = Vector2Equals(nextHead, food.position);
     snake.body.push_front(nextHead);
     if (foodEaten) {

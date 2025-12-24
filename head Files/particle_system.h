@@ -1,6 +1,4 @@
-#ifndef PARTICLE_SYSTEM_H
-#define PARTICLE_SYSTEM_H
-
+#pragma once
 #include <vector>
 #include <raylib.h>
 
@@ -26,5 +24,3 @@ public:
         float minSize, float maxSize,
         Color baseColor, bool shrink = false);
 };
-
-#endif

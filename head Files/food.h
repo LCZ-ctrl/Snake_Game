@@ -1,6 +1,4 @@
-#ifndef FOOD_H
-#define FOOD_H
-
+#pragma once
 #include <iostream>
 #include <deque>
 #include <vector>
@@ -15,9 +13,9 @@ public:
     Food(std::deque<Vector2> snakeBody);
     ~Food();
 
-    void Draw();
-    Vector2 GenerateRandomCell();
+    void Draw(); // draw food
+    Vector2 GenerateRandomCell(); // select a coordinate randomly
+
+    // Generate a food position that does not overlap with the snake or obstacles
     Vector2 GenerateRandomPos(std::deque<Vector2> snakeBody, const std::vector<Vector2>& obstacles = {});
 };
-
-#endif

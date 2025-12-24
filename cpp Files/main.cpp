@@ -43,10 +43,6 @@ int main() {
 	bool shouldExit = false;
 	float lastFrameTime = GetTime();
 
-	float logoStartTime = GetTime();
-	const float logoDuration = 3.5f;
-	const float logoPause = 0.8f;
-
 	g_audioThreadRunning = true;
 	g_audioThread = std::thread([&game]() {
 		using namespace std::chrono;
@@ -274,11 +270,10 @@ int main() {
 
 			if (game.showInstructions) {
 				ImGui::SetNextWindowPos(ImVec2(GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f),
-					ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
+					ImGuiCond_Always, ImVec2(0.5f, 0.5f));
 				ImGui::SetNextWindowSize(ImVec2(890, 780));
 				ImGui::Begin("Game Instructions", &game.showInstructions,
-					ImGuiWindowFlags_NoResize |
-					ImGuiWindowFlags_NoCollapse);
+					ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
 				ImGui::SetWindowFontScale(1.2f);
 				ImGui::TextColored(ImVec4(0.8f, 1.0f, 0.2f, 1.0f), "Controls:");
 				ImGui::BulletText("Use Arrow Keys to move the snake");
@@ -314,12 +309,12 @@ int main() {
 
 			if (game.showAcknowledgement) {
 				ImGui::SetNextWindowPos(ImVec2(GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f),
-					ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
-				ImGui::SetNextWindowSize(ImVec2(780, 480));
+					ImGuiCond_Always, ImVec2(0.5f, 0.5f));
+				ImGui::SetNextWindowSize(ImVec2(780, 550));
 				ImGui::Begin("Acknowledgement", &game.showAcknowledgement,
 					ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
 				ImGui::SetWindowFontScale(1.2f);
-				ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.8f, 1.0f), "Thanks to following musicians:");
+				ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.8f, 1.0f), "Music:");
 				ImGui::Spacing();
 				ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.8f, 1.0f), "a brief love affair - Olivia Herdt");
 				ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.8f, 1.0f), "winter heartbeat - Olivia Herdt");
@@ -327,11 +322,14 @@ int main() {
 				ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.8f, 1.0f), "la vie en rose - Olivia Herdt");
 				ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.8f, 1.0f), "Lovers - Olivia Herdt");
 				ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.8f, 1.0f), "be there - Olivia Herdt");
-				ImGui::Spacing();
 				ImGui::Separator();
 				ImGui::Spacing();
-				ImGui::TextColored(ImVec4(0.5f, 0.9f, 1.0f, 1.0f), "Special thanks to :)");
+				ImGui::TextColored(ImVec4(0.5f, 0.9f, 1.0f, 1.0f), "Special thanks to:");
 				ImGui::TextColored(ImVec4(0.5f, 0.9f, 1.0f, 1.0f), "LCQ Liza YSJ XHR HKW Evgenia");
+				ImGui::Separator();
+				ImGui::Spacing();
+				ImGui::TextColored(ImVec4(1.0f, 1.0f, 0.0f, 1.0f), "Contact me :)");
+				ImGui::TextColored(ImVec4(1.0f, 1.0f, 0.0f, 1.0f), "https://github.com/LCZ-ctrl");
 				ImGui::Separator();
 				ImGui::Spacing();
 				ImGui::TextColored(ImVec4(0.1f, 1.0f, 0.4f, 1.0f), "No commercial use!!");

@@ -1,6 +1,4 @@
-#ifndef HIGH_SCORE_H
-#define HIGH_SCORE_H
-
+#pragma once
 #include <string>
 
 extern const std::string highScoreFolder;
@@ -10,5 +8,3 @@ extern const std::string mode2File;
 void CreateHighScoreFolder();
 int GetHighScoreForMode(int mode);
 void SetHighScoreForMode(int mode, int score);
-
-#endif

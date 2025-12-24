@@ -1,10 +1,6 @@
-#ifndef BACKGROUND_H
-#define BACKGROUND_H
-
+#pragma once
 #include <iostream>
 #include <vector>
 #include <raylib.h>
 
-void DrawGradientBackground();
-
-#endif
+void DrawGradientBackground(); // the menu background
