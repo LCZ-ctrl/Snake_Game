@@ -12,14 +12,14 @@ A snake game developed in C++ using Visual Studio 2022
 
 ### Features
 
-- <em><strong>Dual difficulty modes. In Hard mode random obstacles are generated and the snake speeds up as it grows</strong></em>
-- <em><strong>High-impact explosion effects and screen shake upon collision</strong></em>
-- <em><strong>Built-in 6 background tracks, supports:  
+- <strong>Dual difficulty modes. In Hard mode random obstacles are generated and the snake speeds up as it grows</strong>
+- <strong>High-impact explosion effects and screen shake upon collision</strong>
+- <strong>Built-in 6 background tracks, supports:  
   - Space: Pause / Resume  
   - A / D: Previous / Next track  
   - W / S: Volume adjustment (±10%) with normalized initial levels  
-    (Notice: I've already adjusted the initial volume accroding to the source file)</strong></em>
-- <em><strong>Highest scores for both modes are automatically saved to a local folder</strong></em>  
+    (Notice: I've already adjusted the initial volume accroding to the source file)</strong>
+- <strong>Highest scores for both modes are automatically saved to a local folder</strong>  
 
 ### Screenshots
 
