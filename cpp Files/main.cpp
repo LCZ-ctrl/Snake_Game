@@ -63,6 +63,8 @@ int main() {
 						else if (game.currentMusicIndex == 3) SetMusicVolume(game.playlist[3], game.musicVolume4);
 						else if (game.currentMusicIndex == 4) SetMusicVolume(game.playlist[4], game.musicVolume5);
 						else if (game.currentMusicIndex == 5) SetMusicVolume(game.playlist[5], game.musicVolume6);
+						else if (game.currentMusicIndex == 6) SetMusicVolume(game.playlist[6], game.musicVolume7);
+						else if (game.currentMusicIndex == 7) SetMusicVolume(game.playlist[7], game.musicVolume8);
 					}
 				}
 			}
@@ -85,6 +87,8 @@ int main() {
 				else if (game.currentMusicIndex == 3) SetMusicVolume(game.playlist[3], game.musicVolume4);
 				else if (game.currentMusicIndex == 4) SetMusicVolume(game.playlist[4], game.musicVolume5);
 				else if (game.currentMusicIndex == 5) SetMusicVolume(game.playlist[5], game.musicVolume6);
+				else if (game.currentMusicIndex == 6) SetMusicVolume(game.playlist[6], game.musicVolume7);
+				else if (game.currentMusicIndex == 7) SetMusicVolume(game.playlist[7], game.musicVolume8);
 				g_musicStarted.store(true);
 				game.musicPaused = false;
 			}
@@ -101,6 +105,8 @@ int main() {
 					else if (game.currentMusicIndex == 3) SetMusicVolume(game.playlist[3], game.musicVolume4);
 					else if (game.currentMusicIndex == 4) SetMusicVolume(game.playlist[4], game.musicVolume5);
 					else if (game.currentMusicIndex == 5) SetMusicVolume(game.playlist[5], game.musicVolume6);
+					else if (game.currentMusicIndex == 6) SetMusicVolume(game.playlist[6], game.musicVolume7);
+					else if (game.currentMusicIndex == 7) SetMusicVolume(game.playlist[7], game.musicVolume8);
 					g_musicStarted.store(true);
 					game.musicPaused = false;
 				}
@@ -129,6 +135,8 @@ int main() {
 				else if (game.currentMusicIndex == 3) SetMusicVolume(game.playlist[3], game.musicVolume4);
 				else if (game.currentMusicIndex == 4) SetMusicVolume(game.playlist[4], game.musicVolume5);
 				else if (game.currentMusicIndex == 5) SetMusicVolume(game.playlist[5], game.musicVolume6);
+				else if (game.currentMusicIndex == 6) SetMusicVolume(game.playlist[6], game.musicVolume7);
+				else if (game.currentMusicIndex == 7) SetMusicVolume(game.playlist[7], game.musicVolume8);
 			}
 		}
 
@@ -144,6 +152,8 @@ int main() {
 				else if (game.currentMusicIndex == 3) SetMusicVolume(game.playlist[3], game.musicVolume4);
 				else if (game.currentMusicIndex == 4) SetMusicVolume(game.playlist[4], game.musicVolume5);
 				else if (game.currentMusicIndex == 5) SetMusicVolume(game.playlist[5], game.musicVolume6);
+				else if (game.currentMusicIndex == 6) SetMusicVolume(game.playlist[6], game.musicVolume7);
+				else if (game.currentMusicIndex == 7) SetMusicVolume(game.playlist[7], game.musicVolume8);
 			}
 		}
 
@@ -156,6 +166,8 @@ int main() {
 				else if (game.currentMusicIndex == 3) { game.musicVolume4 = min(game.musicVolume4 + 0.1f, 1.0f); SetMusicVolume(game.playlist[3], game.musicVolume4); }
 				else if (game.currentMusicIndex == 4) { game.musicVolume5 = min(game.musicVolume5 + 0.1f, 1.0f); SetMusicVolume(game.playlist[4], game.musicVolume5); }
 				else if (game.currentMusicIndex == 5) { game.musicVolume6 = min(game.musicVolume6 + 0.1f, 1.0f); SetMusicVolume(game.playlist[5], game.musicVolume6); }
+				else if (game.currentMusicIndex == 6) { game.musicVolume7 = min(game.musicVolume7 + 0.1f, 1.0f); SetMusicVolume(game.playlist[6], game.musicVolume7); }
+				else if (game.currentMusicIndex == 7) { game.musicVolume8 = min(game.musicVolume8 + 0.1f, 1.0f); SetMusicVolume(game.playlist[7], game.musicVolume8); }
 			}
 		}
 
@@ -168,6 +180,8 @@ int main() {
 				else if (game.currentMusicIndex == 3) { game.musicVolume4 = max(game.musicVolume4 - 0.1f, 0.0f); SetMusicVolume(game.playlist[3], game.musicVolume4); }
 				else if (game.currentMusicIndex == 4) { game.musicVolume5 = max(game.musicVolume5 - 0.1f, 0.0f); SetMusicVolume(game.playlist[4], game.musicVolume5); }
 				else if (game.currentMusicIndex == 5) { game.musicVolume6 = max(game.musicVolume6 - 0.1f, 0.0f); SetMusicVolume(game.playlist[5], game.musicVolume6); }
+				else if (game.currentMusicIndex == 6) { game.musicVolume7 = max(game.musicVolume7 - 0.1f, 0.0f); SetMusicVolume(game.playlist[6], game.musicVolume7); }
+				else if (game.currentMusicIndex == 7) { game.musicVolume8 = max(game.musicVolume8 - 0.1f, 0.0f); SetMusicVolume(game.playlist[7], game.musicVolume8); }
 			}
 		}
 
@@ -271,7 +285,7 @@ int main() {
 			if (game.showInstructions) {
 				ImGui::SetNextWindowPos(ImVec2(GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f),
 					ImGuiCond_Always, ImVec2(0.5f, 0.5f));
-				ImGui::SetNextWindowSize(ImVec2(890, 780));
+				ImGui::SetNextWindowSize(ImVec2(820, 640));
 				ImGui::Begin("Game Instructions", &game.showInstructions,
 					ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
 				ImGui::SetWindowFontScale(1.2f);
@@ -310,7 +324,7 @@ int main() {
 			if (game.showAcknowledgement) {
 				ImGui::SetNextWindowPos(ImVec2(GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f),
 					ImGuiCond_Always, ImVec2(0.5f, 0.5f));
-				ImGui::SetNextWindowSize(ImVec2(720, 470));
+				ImGui::SetNextWindowSize(ImVec2(640, 450));
 				ImGui::Begin("Acknowledgement", &game.showAcknowledgement,
 					ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
 				ImGui::SetWindowFontScale(1.2f);
@@ -322,6 +336,8 @@ int main() {
 				ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.8f, 1.0f), "la vie en rose - Olivia Herdt");
 				ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.8f, 1.0f), "Lovers - Olivia Herdt");
 				ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.8f, 1.0f), "be there - Olivia Herdt");
+				ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.8f, 1.0f), "Strawberry Kisses - Olivia Herdt");
+				ImGui::TextColored(ImVec4(1.0f, 0.5f, 0.8f, 1.0f), "love galore - Olivia Herdt");
 				/*ImGui::Separator();
 				ImGui::Spacing();
 				ImGui::TextColored(ImVec4(0.5f, 0.9f, 1.0f, 1.0f), "Special thanks to:");

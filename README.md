@@ -36,3 +36,10 @@ A snake game developed in C++ using Visual Studio 2022
 </p>
 
 #### Give it a try now! 👉: [Download](https://github.com/LCZ-ctrl/Snake_Game/releases)
+<br><br>
+#### How to install external libraries
+- raylib and imgui: [vcpkg](https://www.youtube.com/watch?v=UiZGTIYld1M)
+- rlimgui:  
+  - Make sure you have installed imgui first
+  - Clone the library: [rlImGui](https://github.com/raylib-extras/rlImGui), move the entire folder under the project folder
+  - In Visual Studio, right-click the project, select "Properties", select "C/C++", select "General", and add the folder in "Additional Include Directories"

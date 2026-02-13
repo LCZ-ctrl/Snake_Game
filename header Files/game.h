@@ -30,7 +30,8 @@ public:
     int currentMusicIndex;
     bool musicPaused;
 
-    float musicVolume1, musicVolume2, musicVolume3, musicVolume4, musicVolume5, musicVolume6;
+    float musicVolume1, musicVolume2, musicVolume3, musicVolume4, 
+        musicVolume5, musicVolume6, musicVolume7, musicVolume8;
     std::vector<float> musicDurations;
     float eatVolume, wallVolume;
 
